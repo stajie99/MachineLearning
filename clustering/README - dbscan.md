@@ -43,7 +43,9 @@ plt.show()
 
 print("Number of clusters:", len(set(labels)) - (1 if -1 in labels else 0))
 print("Number of noise points:", list(labels).count(-1))
+
 ```
+![DBSCAN Visualization](./dbscan_basic.png "DBSCAN Clustering Results")
 
 ### 2. Advanced DBSCAN with Mixed Dataset
 
