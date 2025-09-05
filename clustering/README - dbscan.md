@@ -81,6 +81,9 @@ n_noise = list(labels).count(-1)
 print('Estimated number of clusters: %d' % n_clusters)
 print('Estimated number of noise points: %d' % n_noise)
 ```
+<p align="center">
+    <img src="./dbscan_mixed.png" alt="DBSCAN Clustering Results" width="600" height="400">
+</p>
 
 ### 4. Performance Evaluation
 
