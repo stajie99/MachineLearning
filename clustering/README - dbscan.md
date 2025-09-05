@@ -45,7 +45,9 @@ print("Number of clusters:", len(set(labels)) - (1 if -1 in labels else 0))
 print("Number of noise points:", list(labels).count(-1))
 
 ```
-<img src="./dbscan_basic.png" alt="DBSCAN Clustering" width="800" height="400">
+<p align="center">
+    <img src="./dbscan_basic.png" alt="DBSCAN Clustering" width="600" height="400">
+</p>
 ### 2. Advanced DBSCAN with Mixed Dataset
 
 ```python
