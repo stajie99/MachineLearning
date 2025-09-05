@@ -60,19 +60,19 @@ Actual: 2    [0          14            36]
 ## Classification Report Metrics
 
 ### Precision
-- **Definition**: **Percentage of correct predictions** for a specific class
+- **Definition**: **_Percentage of correct predictions_** for a specific class
 - **Formula**: `TP / (TP + FP)`
 - **Interpretation**: High precision = few false positives
 
 ### Recall (Sensitivity)
-- **Definition**: **Percentage of actual class instances correctly identified**
+- **Definition**: **_Percentage of actual class instances correctly identified_**
 - **Formula**: `TP / (TP + FN)`
 - **Interpretation**: High recall = few false negatives
 
 ### F1-Score
-- **Definition**: Harmonic **mean of precision and recall**
+- **Definition**: Harmonic **_mean of precision and recall_**
 - **Formula**: `2 × (precision × recall) / (precision + recall)`
-- **Interpretation**: **Balanced measure of both metrics**
+- **Interpretation**: **_Balanced measure of both metrics_**
 
 ### Support
 - **Definition**: Number of actual occurrences of each class
@@ -90,7 +90,7 @@ Actual: 2    [0          14            36]
 ```
            1       0.77      0.96      0.86        50
 ```
-- **High recall (0.96)**: **Finds most actual class 1** samples
+- **High recall (0.96)**: **_Finds most actual class 1_** samples
 - **Moderate precision (0.77)**: Some false positives
 - **Tendency to over-predict** class 1
 
@@ -98,8 +98,8 @@ Actual: 2    [0          14            36]
 ```
            2       0.95      0.72      0.82        50
 ```
-- **High precision (0.95)**: **Most class 2 predictions are correct**
-- **Lower recall (0.72)**: **Misses many actual class 2** samples
+- **High precision (0.95)**: **_Most class 2 predictions are correct_**
+- **Lower recall (0.72)**: **_Misses many actual class 2_** samples
 - **Tendency to under-predict** class 2
 
 ## Summary Statistics
