@@ -78,3 +78,72 @@ for k, col in zip(unique_labels, colors):
 
 plt.title('DBSCAN Clustering\nEstimated number of clusters: %d' % n_clusters)
 plt.show()
+
+
+
+# Evaluate clustering performance (if ground truth is available)
+if len(set(y_true)) > 1:  # Only if we have true labels
+    print("Adjusted Rand Index:", metrics.adjusted_rand_score(y_true, labels))
+    print("Silhouette Coefficient:", metrics.silhouette_score(X, labels))
+
+# For datasets without ground truth
+print("Silhouette Score:", metrics.silhouette_score(X_scaled, labels))
+
+
+
+
+
+from sklearn.neighbors import NearestNeighbors
+import numpy as np
+
+# Method to find optimal eps value
+def find_optimal_eps(X, min_samples):
+    neighbors = NearestNeighbors(n_neighbors=min_samples)
+    neighbors_fit = neighbors.fit(X)
+    distances, indices = neighbors_fit.kneighbors(X)
+    distances = np.sort(distances[:, min_samples-1], axis=0)
+    
+    plt.figure(figsize=(10, 6))
+    plt.plot(distances)
+    plt.title('K-distance Graph')
+    plt.xlabel('Data Points sorted by distance')
+    plt.ylabel('Epsilon')
+    plt.show()
+    
+    # The "elbow" point is a good candidate for eps
+    return distances[int(len(distances)*0.95)]  # 95th percentile as suggestion
+
+# Find optimal parameters
+min_samples = 5
+optimal_eps = find_optimal_eps(X_scaled, min_samples)
+print(f"Suggested eps value: {optimal_eps:.3f}")
+
+# Run DBSCAN with suggested parameters
+dbscan_optimal = DBSCAN(eps=optimal_eps, min_samples=min_samples)
+labels_optimal = dbscan_optimal.fit_predict(X_scaled)
+
+
+
+
+from sklearn.cluster import KMeans
+
+# Compare with K-Means
+kmeans = KMeans(n_clusters=2, random_state=0)
+kmeans_labels = kmeans.fit_predict(X_scaled)
+
+plt.figure(figsize=(15, 5))
+
+plt.subplot(1, 3, 1)
+plt.scatter(X_scaled[:, 0], X_scaled[:, 1], c=y_true, cmap='viridis', s=50)
+plt.title("True Labels")
+
+plt.subplot(1, 3, 2)
+plt.scatter(X_scaled[:, 0], X_scaled[:, 1], c=labels, cmap='viridis', s=50)
+plt.title("DBSCAN Clustering")
+
+plt.subplot(1, 3, 3)
+plt.scatter(X_scaled[:, 0], X_scaled[:, 1], c=kmeans_labels, cmap='viridis', s=50)
+plt.title("K-Means Clustering")
+
+plt.tight_layout()
+plt.show()
