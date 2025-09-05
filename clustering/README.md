@@ -75,6 +75,7 @@ Applies StandardScaler for feature normalization
 4. **Dimensionality Reduction**: 2D visualization of multi-dimensional data
 
 **Parameters Explained**
+
 n_clusters: Number of clusters to form
 
 random_state: Seed for reproducible results
