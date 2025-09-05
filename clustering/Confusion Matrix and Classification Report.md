@@ -60,19 +60,19 @@ Actual: 2    [0          14            36]
 ## Classification Report Metrics
 
 ### Precision
-- **Definition**: Percentage of correct predictions for a specific class
+- **Definition**: **Percentage of correct predictions** for a specific class
 - **Formula**: `TP / (TP + FP)`
 - **Interpretation**: High precision = few false positives
 
 ### Recall (Sensitivity)
-- **Definition**: Percentage of actual class instances correctly identified
+- **Definition**: **Percentage of actual class instances correctly identified**
 - **Formula**: `TP / (TP + FN)`
 - **Interpretation**: High recall = few false negatives
 
 ### F1-Score
-- **Definition**: Harmonic mean of precision and recall
+- **Definition**: Harmonic **mean of precision and recall**
 - **Formula**: `2 × (precision × recall) / (precision + recall)`
-- **Interpretation**: Balanced measure of both metrics
+- **Interpretation**: **Balanced measure of both metrics**
 
 ### Support
 - **Definition**: Number of actual occurrences of each class
@@ -83,14 +83,14 @@ Actual: 2    [0          14            36]
 ```
            0       1.00      1.00      1.00        50
 ```
-- **Perfect classification** (precision = 1.00, recall = 1.00)
-- All 50 samples correctly identified
+- **Perfect classification** **(precision = 1.00, recall = 1.00)
+- All 50 samples correctly identified**
 
 ### Class 1 Performance
 ```
            1       0.77      0.96      0.86        50
 ```
-- **High recall (0.96)**: Finds most actual class 1 samples
+- **High recall (0.96)**: **Finds most actual class 1** samples
 - **Moderate precision (0.77)**: Some false positives
 - **Tendency to over-predict** class 1
 
@@ -98,14 +98,14 @@ Actual: 2    [0          14            36]
 ```
            2       0.95      0.72      0.82        50
 ```
-- **High precision (0.95)**: Most class 2 predictions are correct
-- **Lower recall (0.72)**: Misses many actual class 2 samples
+- **High precision (0.95)**: **Most class 2 predictions are correct**
+- **Lower recall (0.72)**: **Misses many actual class 2** samples
 - **Tendency to under-predict** class 2
 
 ## Summary Statistics
 
 ### Accuracy
-- **Overall correctness**: 89% (134 correct out of 150 total)
+- **Overall correctness**: 89% (**134 correct out of 150 total**)
 
 ### Macro Average
 - **Simple average** across all classes: 0.91
@@ -118,10 +118,10 @@ Actual: 2    [0          14            36]
 ## Performance Indicators
 
 ### ✅ Good Signs
-- High diagonal values in confusion matrix
-- Precision and recall values close to 1.0
-- Consistent performance across classes
-- High F1-scores
+- **High diagonal values in confusion matrix**
+- **Precision and recall values close to 1.0**
+- **Consistent performance across classes**
+- **High F1-scores**
 
 ### ❌ Problem Areas
 - Many off-diagonal values
@@ -137,11 +137,11 @@ Actual: 2    [0          14            36]
 3. **Trade-off** between precision and recall for classes 1 and 2
 
 ### Recommended Actions
-1. **Feature engineering** to better separate confused classes
-2. **Algorithm selection** - try different models that might handle the separation better
+1. **Feature engineering** to **better separate confused classes**
+2. **Algorithm selection** - **try different models that might handle the separation better**
 3. **Class weights** adjustment to address performance imbalance
 4. **Data quality check** - ensure classes are well-defined and separable
-5. **Threshold adjustment** to optimize precision/recall trade-off
+5. **Threshold adjustment** **to optimize precision/recall trade-off**
 
 ## Key Terminology
 
@@ -151,16 +151,16 @@ Actual: 2    [0          14            36]
 | **True Negative (TN)** | Correctly predicted negative class |
 | **False Positive (FP)** | Incorrectly predicted positive class |
 | **False Negative (FN)** | Incorrectly predicted negative class |
-| **Precision** | Accuracy of positive predictions |
-| **Recall** | Coverage of actual positive instances |
-| **F1-Score** | Balanced measure of precision and recall |
+| **Precision** | **Accuracy of positive predictions** |
+| **Recall** | **Coverage of actual positive instances** |
+| **F1-Score** | **Balanced measure of precision and recall** |
 
 ## Practical Tips
 
 1. **Focus on relevant metrics** for your specific use case
 2. **Consider business context** when evaluating trade-offs
 3. **Use multiple evaluation metrics** for comprehensive assessment
-4. **Compare against baseline models** for meaningful interpretation
+4. **Compare against baseline models** **for meaningful interpretation**
 5. **Visualize results** with heatmaps for better understanding
 
 This output provides crucial diagnostic information about model performance and guides improvement strategies for better classification results.
