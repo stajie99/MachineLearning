@@ -18,10 +18,10 @@ pip install numpy matplotlib scikit-learn
 
 ## Code Structure
 **Part 1: Synthetic Data Clustering**
-1. Data Generation using make_blobs
+1. **Data Generation** using make_blobs
 Visualizes the unlabeled data with true cluster colors
 
-2. K-Means Implementation
+2. **K-Means Implementation**
 - Fits the model to the data
 - Extracts and displays:
     - Cluster centers
@@ -29,28 +29,28 @@ Visualizes the unlabeled data with true cluster colors
     - Inertia (sum of squared distances)
     - Number of iterations
 
-3. Results Visualization
+3. **Results Visualization**
 -Plots clustered data points with different colors
 -Marks cluster centroids with red X markers
 
-4. Elbow Method Analysis
+4. **Elbow Method Analysis**
 - Tests K values from 1 to 10
 - Plots inertia vs. number of clusters
 - Helps determine optimal cluster count
 
 **Part 2: Iris Dataset Analysis**
-1. Data Preparation
+1. **Data Preparation**
 Applies StandardScaler for feature normalization
 
-3. Clustering Application
+2. **Clustering Application**
 - Applies K-Means with 3 clusters (matching Iris species count)
 - Predicts cluster labels
 
-3. Performance Evaluation
+3. **Performance Evaluation**
 - Generates **confusion matrix comparing true vs. predicted labels**
 - **Provides classification report with precision, recall, and F1-score**
 
-4. 2D Visualization
+4. **2D Visualization**
 - Plots clusters using first two features (sepal length and width)
 - Displays cluster centroids
 
@@ -68,10 +68,11 @@ Applies StandardScaler for feature normalization
 4. Modify parameters (n_clusters, random_state) to experiment with different configurations
 
 **Key Concepts Demonstrated**
-**1. Unsupervised Learning**: Clustering without predefined labels
-**2. Feature Scaling**: Importance of normalizing features
-**3. Cluster Validation**: Using inertia and evaluation metrics
-**4. Dimensionality Reduction**: 2D visualization of multi-dimensional data
+
+1. **Unsupervised Learning**: Clustering without predefined labels
+2. **Feature Scaling**: Importance of normalizing features
+3. **Cluster Validation**: Using inertia and evaluation metrics
+4. **Dimensionality Reduction**: 2D visualization of multi-dimensional data
 
 **Parameters Explained**
 n_clusters: Number of clusters to form
