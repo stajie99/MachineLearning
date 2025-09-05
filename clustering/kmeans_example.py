@@ -6,13 +6,31 @@ from sklearn.datasets import make_blobs
 # 1. Generate sample data (default number of features of each sample is 2)
 X, y_true = make_blobs(n_samples=300, centers=4, cluster_std=0.6, random_state=0)
 # Visualize the unlabeled data
-plt.scatter(X[:,0], X[:,1], s = 50) # s is the marker size
+plt.scatter(X[:,0], X[:,1], c=y_true, s = 50, edgecolors='grey', alpha=0.8) # s is the marker size
 plt.title("Generated Data for Clustering")
 plt.show()
 
 # 2. Apply K-Means 
 kmeans = KMeans(n_clusters=4, random_state=0, n_init=10)
-# fit the model to the data and predict the cluster labels.
+# trial 1: Fit the model
+kmeans.fit(X)
+
+# Access the learned attributes
+print("Cluster centers:\n", kmeans.cluster_centers_)
+print("Labels for each point:", kmeans.labels_)
+print("Sum of squared distances to closest centroid (Inertia):", kmeans.inertia_)
+print("Number of iterations run:", kmeans.n_iter_)
+# *   `cluster_centers_` (ndarray of shape (n_clusters, n_features)): Coordinates of cluster centers.
+# *   `labels_` (ndarray of shape (n_samples,)): Label (cluster index) of each point.
+# *   `inertia_` (float): Sum of squared distances of samples to their closest cluster center. This is the value the algorithm tries to minimize. A lower inertia means a better fit (but beware of overfitting with high K!).
+# *   `n_iter_` (int): Number of iterations run for that particular initialization.
+
+kmeans.transform(X)
+#    `.transform(X)`: Transforms `X` to a cluster-distance space. Returns an array 
+# where each element is the distance from the sample to each cluster center `(n_samples, n_clusters)`.
+
+
+# trial 2: fit the model to the data and predict the cluster labels.
 labels = kmeans.fit_predict(X)
 # Get the coordinates of the cluster centers
 centroids = kmeans.cluster_centers_
