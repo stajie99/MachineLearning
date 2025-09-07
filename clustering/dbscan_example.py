@@ -5,11 +5,13 @@ import matplotlib.pyplot as plt
 
 # Generate sample data
 X, _ = make_moons(n_samples=300, noise=0.05, random_state=0)
-
+# make_moons(): A function from sklearn.datasets that creates moon-shaped clusters
+# X: A 2D numpy array with shape (300, 2) containing the coordinates
+# _: The ignored labels (0 and 1 indicating which moon each point belongs to)
 # Apply DBSCAN
 dbscan = DBSCAN(eps=0.3, min_samples=5)
 labels = dbscan.fit_predict(X)
-
+print(labels)
 # Visualize results
 plt.scatter(X[:, 0], X[:, 1], c=labels, cmap='viridis', s=50)
 plt.title("DBSCAN Clustering")
@@ -28,6 +30,7 @@ from sklearn import metrics
 X1, y1 = make_moons(n_samples=300, noise=0.05, random_state=0)
 X2, y2 = make_blobs(n_samples=100, centers=[[3, 3]], cluster_std=0.5, random_state=0)
 X = np.vstack([X1, X2])
+# ytrue = np.vstack((y1, y2))
 
 # Scale the data
 scaler = StandardScaler()
@@ -77,6 +80,9 @@ for k, col in zip(unique_labels, colors):
              markeredgecolor='k', markersize=6, alpha=0.6)
 
 plt.title('DBSCAN Clustering\nEstimated number of clusters: %d' % n_clusters)
+# \n - newline character to create a subtitle
+# %d - placeholder for an integer value
+# % n_clusters - String formatting that replaces %d with the value of n_clusters
 plt.show()
 
 
