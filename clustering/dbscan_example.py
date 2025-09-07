@@ -26,11 +26,13 @@ from sklearn.datasets import make_moons, make_blobs
 from sklearn.preprocessing import StandardScaler
 from sklearn import metrics
 
-# Generate sample data
+# Generate sample data 1 - the moon type data; data 2 - the guassion blobs 
+# i.e. normally distributed around a central point
+
 X1, y1 = make_moons(n_samples=300, noise=0.05, random_state=0)
 X2, y2 = make_blobs(n_samples=100, centers=[[3, 3]], cluster_std=0.5, random_state=0)
 X = np.vstack([X1, X2])
-# ytrue = np.vstack((y1, y2))
+# ytrue = [y1, y2]
 
 # Scale the data
 scaler = StandardScaler()
