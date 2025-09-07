@@ -48,8 +48,9 @@ print("Number of noise points:", list(labels).count(-1))
 <p align="center">
     <img src="./dbscan_basic.png" alt="DBSCAN Clustering" width="600" height="400">
 </p>
-### 2. Advanced DBSCAN with Mixed Dataset
 
+### 2. Advanced DBSCAN with Mixed Dataset
+#### 2.1 Generate Mixed Dataset
 ```python
 from sklearn.datasets import make_moons, make_blobs
 from sklearn.preprocessing import StandardScaler
@@ -69,7 +70,7 @@ dbscan = DBSCAN(eps=0.3, min_samples=5)
 labels = dbscan.fit_predict(X_scaled)
 ```
 
-### 3. Cluster Analysis and Visualization
+#### 2.2 Cluster Analysis and Visualization
 
 ```python
 # Get cluster information
@@ -85,14 +86,14 @@ print('Estimated number of noise points: %d' % n_noise)
     <img src="./dbscan_mixed.png" alt="DBSCAN Clustering Results" width="600" height="400">
 </p>
 
-### 4. Performance Evaluation
+#### 2.4 Performance Evaluation
 
 ```python
 # Evaluate clustering performance
 print("Silhouette Score:", metrics.silhouette_score(X_scaled, labels))
 ```
 
-### 5. Parameter Optimization
+#### 2.5 Parameter Optimization
 
 ```python
 from sklearn.neighbors import NearestNeighbors
@@ -113,7 +114,7 @@ def find_optimal_eps(X, min_samples):
     return distances[int(len(distances)*0.95)]
 ```
 
-### 6. Comparison with K-Means
+#### 2.6 Comparison with K-Means
 
 ```python
 from sklearn.cluster import KMeans

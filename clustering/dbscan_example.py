@@ -3,7 +3,7 @@ from sklearn.cluster import DBSCAN
 from sklearn.datasets import make_moons
 import matplotlib.pyplot as plt
 
-# Generate sample data
+## 1. Generate sample data
 X, _ = make_moons(n_samples=300, noise=0.05, random_state=0)
 # make_moons(): A function from sklearn.datasets that creates moon-shaped clusters
 # X: A 2D numpy array with shape (300, 2) containing the coordinates
@@ -12,7 +12,7 @@ X, _ = make_moons(n_samples=300, noise=0.05, random_state=0)
 dbscan = DBSCAN(eps=0.3, min_samples=5)
 labels = dbscan.fit_predict(X)
 print(labels)
-# Visualize results
+# 2. Visualize results
 plt.scatter(X[:, 0], X[:, 1], c=labels, cmap='viridis', s=50)
 plt.title("DBSCAN Clustering")
 plt.show()
@@ -26,7 +26,7 @@ from sklearn.datasets import make_moons, make_blobs
 from sklearn.preprocessing import StandardScaler
 from sklearn import metrics
 
-# Generate sample data 1 - the moon type data; data 2 - the guassion blobs 
+# 1. Generate sample data 1 - the moon type data; data 2 - the guassion blobs 
 # i.e. normally distributed around a central point
 
 X1, y1 = make_moons(n_samples=300, noise=0.05, random_state=0)
@@ -34,15 +34,15 @@ X2, y2 = make_blobs(n_samples=100, centers=[[3, 3]], cluster_std=0.5, random_sta
 X = np.vstack([X1, X2])
 # ytrue = [y1, y2]
 
-# Scale the data
+# 2. Scale the data
 scaler = StandardScaler()
 X_scaled = scaler.fit_transform(X)
 
-# Apply DBSCAN
+# 3. Apply DBSCAN
 dbscan = DBSCAN(eps=0.3, min_samples=5)
 labels = dbscan.fit_predict(X_scaled)
 
-# Get cluster information
+# 4. Get cluster information
 core_samples_mask = np.zeros_like(labels, dtype=bool)
 core_samples_mask[dbscan.core_sample_indices_] = True
 n_clusters = len(set(labels)) - (1 if -1 in labels else 0)
@@ -51,7 +51,7 @@ n_noise = list(labels).count(-1)
 print('Estimated number of clusters: %d' % n_clusters)
 print('Estimated number of noise points: %d' % n_noise)
 
-# Visualize the results
+# 5. Visualize the results
 unique_labels = set(labels)
 colors = [plt.cm.Spectral(each) for each in np.linspace(0, 1, len(unique_labels))]
 
@@ -89,7 +89,7 @@ plt.show()
 
 
 
-# Evaluate clustering performance (if ground truth is available)
+## 6. Evaluate clustering performance (if ground truth is available)
 if len(set(y_true)) > 1:  # Only if we have true labels
     print("Adjusted Rand Index:", metrics.adjusted_rand_score(y_true, labels))
     print("Silhouette Coefficient:", metrics.silhouette_score(X, labels))
@@ -104,7 +104,7 @@ print("Silhouette Score:", metrics.silhouette_score(X_scaled, labels))
 from sklearn.neighbors import NearestNeighbors
 import numpy as np
 
-# Method to find optimal eps value
+# 7. Method to find optimal eps value
 def find_optimal_eps(X, min_samples):
     neighbors = NearestNeighbors(n_neighbors=min_samples)
     neighbors_fit = neighbors.fit(X)
@@ -135,7 +135,7 @@ labels_optimal = dbscan_optimal.fit_predict(X_scaled)
 
 from sklearn.cluster import KMeans
 
-# Compare with K-Means
+# 8. Compare with K-Means
 kmeans = KMeans(n_clusters=2, random_state=0)
 kmeans_labels = kmeans.fit_predict(X_scaled)
 
