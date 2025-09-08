@@ -49,7 +49,11 @@ labels = dbscan.fit_predict(X_scaled)
 ### 2.2 Cluster Analysis and Visualization
 
 #  Get cluster information
+# Creates a boolean array of the same length as the labels array, initially filled with False values
 core_samples_mask = np.zeros_like(labels, dtype=bool)
+# dbscan.core_sample_indices_: This attribute contains the indices of 
+#   data points that DBSCAN identified as core samples - points that have 
+#   at least min_samples neighbors within eps distance.
 core_samples_mask[dbscan.core_sample_indices_] = True
 n_clusters = len(set(labels)) - (1 if -1 in labels else 0)
 n_noise = list(labels).count(-1)
@@ -99,10 +103,14 @@ plt.show()
 if len(set(y_true)) > 1:  # Only if we have true labels
     print("Adjusted Rand Index:", metrics.adjusted_rand_score(y_true, labels))
     print("Silhouette Coefficient:", metrics.silhouette_score(X, labels))
+# Output:
+# Adjusted Rand Index: 0.04353716280574994
+# Silhouette Coefficient: 0.548886718174513
 
 # For datasets without ground truth
 print("Silhouette Score:", metrics.silhouette_score(X_scaled, labels))
-
+# Output:
+# Silhouette Score: 0.5501027787011699
 
 
 #### 2.5 Parameter Optimization
