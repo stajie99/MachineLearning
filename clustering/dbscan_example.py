@@ -139,6 +139,7 @@ def find_optimal_eps(X, min_samples):
 min_samples = 5
 optimal_eps = find_optimal_eps(X_scaled, min_samples)
 print(f"Suggested eps value: {optimal_eps:.3f}")
+# Output: Suggested eps value: 0.228
 
 # Run DBSCAN with suggested parameters
 dbscan_optimal = DBSCAN(eps=optimal_eps, min_samples=min_samples)

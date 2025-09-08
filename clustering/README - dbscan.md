@@ -166,12 +166,18 @@ def find_optimal_eps(X, min_samples):
     plt.ylabel('Epsilon')
     plt.show()
     
-    return distances[int(len(distances)*0.95)]
+    # The "elbow" point is a good candidate for eps
+    return distances[int(len(distances)*0.95)] # 95th percentile as suggestion
+
 
 # Find optimal parameters
 min_samples = 5
 optimal_eps = find_optimal_eps(X_scaled, min_samples)
 print(f"Suggested eps value: {optimal_eps:.3f}")
+# Output: Suggested eps value: 0.228
+<p align="center">
+    <img src="./eps_vs_the_number_of_data_points_within_neighbourhood.png" alt="Optimal eps selection" width="600" height="400">
+</p>
 
 # Run DBSCAN with suggested parameters
 dbscan_optimal = DBSCAN(eps=optimal_eps, min_samples=min_samples)
