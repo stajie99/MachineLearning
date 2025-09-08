@@ -192,7 +192,26 @@ from sklearn.cluster import KMeans
 # Compare with K-Means
 kmeans = KMeans(n_clusters=2, random_state=0)
 kmeans_labels = kmeans.fit_predict(X_scaled)
+plt.figure(figsize=(15, 5))
+
+plt.subplot(1, 3, 1)
+plt.scatter(X_scaled[:, 0], X_scaled[:, 1], c=y_true, cmap='viridis', s=50)
+plt.title("True Labels")
+
+plt.subplot(1, 3, 2)
+plt.scatter(X_scaled[:, 0], X_scaled[:, 1], c=labels, cmap='viridis', s=50)
+plt.title("DBSCAN Clustering")
+
+plt.subplot(1, 3, 3)
+plt.scatter(X_scaled[:, 0], X_scaled[:, 1], c=kmeans_labels, cmap='viridis', s=50)
+plt.title("K-Means Clustering")
+
+plt.tight_layout()
+plt.show()
 ```
+<p align="center">
+    <img src="./dbscan_vs_kmeans.png" alt="DBSCAN Clustering vs KMeans Clustering" width="600" height="400">
+</p>
 
 ## Key Parameters
 
